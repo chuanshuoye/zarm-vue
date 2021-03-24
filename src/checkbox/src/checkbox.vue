@@ -16,9 +16,10 @@
           type="checkbox"
           :class='`${prefixCls}__input`'
           :disabled='checkboxDisabled'
+          :name="name"
           :value='value'
           v-model='currentValue'
-          @change="onValueChange"
+          @change.stop="onValueChange"
         />
       </div>
     </div>
@@ -37,9 +38,10 @@
       type="checkbox"
       :class='`${prefixCls}__input`'
       :disabled='checkboxDisabled'
+      :name="name"
       :value='value'
       v-model='currentValue'
-      @change="onValueChange"
+      @change.stop="onValueChange"
     />
     <slot></slot>
   </za-button>
@@ -56,9 +58,10 @@
         type="checkbox"
         :class='`${prefixCls}__input`'
         :disabled='checkboxDisabled'
+        :name="name"
         :value='value'
         v-model='currentValue'
-        @change="onValueChange"
+        @change.stop="onValueChange"
       />
     </div>
   </div>
@@ -100,6 +103,10 @@ export default {
     size: {
       type: String,
       validator: enumGenerator(['xl', 'lg', 'sm', 'xs']),
+      default: null,
+    },
+    name: {
+      type: String,
       default: null,
     },
     value: {
@@ -198,7 +205,7 @@ export default {
         });
         self.dispatch('zaCheckboxGroup', 'update:modelValue', [[...Array.from(new Set(next))]]);
       } else {
-        self.$emit('checked', self.currentValue, self.value);
+        self.$emit('change', self.currentValue, self.value);
       }
     },
   },

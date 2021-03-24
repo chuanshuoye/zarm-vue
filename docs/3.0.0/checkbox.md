@@ -4,7 +4,7 @@
 
 ```html
 <za-cell>
-  <za-checkbox @checked="handleChange">普通</za-checkbox>
+  <za-checkbox @change="handleChange">普通</za-checkbox>
 </za-cell>
 <za-cell>
   <za-checkbox checked >选中</za-checkbox>
@@ -22,7 +22,7 @@
 :::demo 单列样式
 
 ```html
-<za-checkbox ref="ruleRef" checked @checked="handleChange" type="cell"
+<za-checkbox ref="ruleRef" checked @change="handleChange" type="cell"
   >阅读并同意《XXX条款》中的相关规定</za-checkbox
 >
 ```
@@ -37,9 +37,9 @@
     v-model="checkboxGroup2"
     slot="description"
     type="button"
-    @checked="handleGroupChange"
+    @change="handleGroupChange"
   >
-      <za-checkbox :value="city" v-for="(city, index) in cities" :key="city"
+      <za-checkbox name="city1" :value="city" v-for="(city, index) in cities" :key="city"
         >{{city}}</za-checkbox
       >
   </za-checkbox-group>
@@ -49,9 +49,9 @@
     v-model="checkboxGroup3"
     slot="description"
     type="button"
-    @checked="handleGroupChange"
+    @change="handleGroupChange"
   >
-    <za-checkbox  :value="city" v-for="(city, index) in cities" :key="city"
+    <za-checkbox name="city2"  :value="city" v-for="(city, index) in cities" :key="city"
       >{{city}}</za-checkbox
     >
   </za-checkbox-group>
@@ -61,10 +61,11 @@
     v-model="checkboxGroup4"
     slot="description"
     type="button"
-    @checked="handleGroupChange"
+    @change="handleGroupChange"
   >
     <za-checkbox
       v-for="(city, index) in cities"
+      name="city3"
       :value="city"
       :key="city"
       :disabled="index === 2"
@@ -78,9 +79,9 @@
     slot="description"
     type="button"
     shape="rect"
-    @checked="handleGroupChange"
+    @change="handleGroupChange"
   >
-    <za-checkbox v-for="(city, index) in cities" :value="city" :key="city"
+    <za-checkbox v-for="(city, index) in cities" name="city4" :value="city" :key="city"
       >{{city}}</za-checkbox
     >
   </za-checkbox-group>
@@ -91,9 +92,9 @@
     slot="description"
     type="button"
     shape="round"
-    @checked="handleGroupChange"
+    @change="handleGroupChange"
   >
-    <za-checkbox v-for="(city, index) in cities" :value="city" :key="city"
+    <za-checkbox v-for="(city, index) in cities" name="city5" :value="city" :key="city"
       >{{city}}</za-checkbox
     >
   </za-checkbox-group>
@@ -111,9 +112,9 @@
     type="button"
     block
     shape="radius"
-    @checked="handleGroupChange"
+    @change="handleGroupChange"
   >
-    <za-checkbox v-for="(city, index) in cities" :value="city" :key="city"
+    <za-checkbox v-for="(city, index) in cities" name="city6" :value="city" :key="city"
       >{{city}}</za-checkbox
     >
   </za-checkbox-group>
@@ -128,10 +129,11 @@
 <za-checkbox-group
   v-model="checkboxGroup7"
   type="cell"
-  @checked="handleGroupChange"
+  @change="handleGroupChange"
 >
   <za-checkbox
     v-for="(city, index) in cities"
+    name="city7"
     :value="city"
     :key="city"
     :disabled="index === 2"
@@ -149,9 +151,9 @@
   v-model="checkboxGroup8"
   type="cell"
   disabled
-  @checked="handleGroupChange"
+  @change="handleGroupChange"
 >
-  <za-checkbox v-for="city in cities" :value="city" :key="city">
+  <za-checkbox v-for="city in cities" name="city8" :value="city" :key="city">
     <span>{{city}}</span>
   </za-checkbox>
 </za-checkbox-group>
@@ -227,6 +229,7 @@ export default {
 | :------- | :------------ | :-------- | :---------------------------------------------------------- | :------- |
 | theme    | string        | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题     |
 | type     | string        |           | 'button', 'cell'                                            | 显示类型 |
+| name      | string        |          |  | 结合checkbox-group使用，标识字段       |
 | value    | string,number |           |                                                             | 选项值   |
 | checked  | boolean       |           |                                                             | 是否选中 |
 | disabled | boolean       | false     |                                                             | 是否禁用 |
@@ -235,10 +238,10 @@ export default {
 
 | 事件名称 | 说明                     | 回调参数                         |
 | :------- | :----------------------- | :------------------------------- |
-| checked   | 当绑定值变化时触发的事件 | 1.选中的值列表，2.event 事件对象 |
+| change   | 当绑定值变化时触发的事件 | 1.选中的值列表，2.event 事件对象 |
 
 #### Checkbox Events
 
 | 事件名称 | 说明                     | 回调参数                         |
 | :------- | :----------------------- | :------------------------------- |
-| checked   | 当绑定值变化时触发的事件 | 1.选中的值列表，2.event 事件对象 |
+| change   | 当绑定值变化时触发的事件 | 1.选中的值列表，2.event 事件对象 |
