@@ -36,9 +36,9 @@ export default {
         const frameLocation = frame.contentWindow.location;
         const { origin, hash } = frameLocation;
         if (theme === 'dark') {
-          frame.setAttribute('src', `${origin}/dark.html${hash}`);
+          frame.setAttribute('src', `${origin}${window.CONFIG.pathname}dark.html${hash}`);
         } else {
-          frame.setAttribute('src', `${origin}/demo.html${hash}`);
+          frame.setAttribute('src', `${origin}${window.CONFIG.pathname}/demo.html${hash}`);
         }
       } catch (e) {
         // console.log(e);
