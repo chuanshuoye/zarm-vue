@@ -68,7 +68,6 @@ app.use(Button)
 app.use(Alert)
 ```
 
-
 - 也可以通过cdn引入umd模块
 ```html
 <!DOCTYPE html>
@@ -92,6 +91,19 @@ app.use(Alert)
 
 ```
 
+### 暗黑模式
+
+- import
+```javascript
+// 引入暗黑样式
+import 'zarm-vue-next/zarm-vue.dark.css';
+```
+
+- umd
+  
+```html
+<link rel="stylesheet" href="https://unpkg.com/zarm-vue-next@latest/zarm-vue.dark.css">
+```
 
 
 

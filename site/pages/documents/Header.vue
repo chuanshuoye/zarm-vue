@@ -12,23 +12,14 @@
       <div class="search">
         <input placeholder="搜索组件..." ref="searchInput" />
       </div>
-      <!-- <div class="version">
-         <el-select v-model="value" placeholder="请选择" size="small" @change="handleVerChange">
-              <el-option
-                v-for="item in options"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value">
-              </el-option>
-            </el-select>
-      </div> -->
       <nav>
         <ul>
-          <!-- <li><a href="https://zarm.design">首页</a></li>
-          <li><a href="https://zarm.design/#/components/quick-start">React 组件</a></li> -->
           <li><a href="#/documents/quick-start" class="active">组件</a></li>
           <li><a href="https://zarm.design/#/design/download">资源</a></li>
           <li><a href="https://github.com/ZhonganTechENG/zarm-vue" target="_blank" rel="noopener noreferrer">Github</a></li>
+          <li>
+            <ThemeSelect />
+          </li>
         </ul>
       </nav>
     </div>
@@ -38,8 +29,12 @@
 <script>
 import Format from '../../utils/format';
 import Demo from '../../demos';
+import ThemeSelect from './Theme';
 
 export default {
+  components: {
+    ThemeSelect,
+  },
   data() {
     return {
       Demo,

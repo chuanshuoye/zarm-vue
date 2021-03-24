@@ -1,6 +1,6 @@
 <template>
   <div class="simulator">
-    <iframe :src="componentPath" title="simulator" frameBorder="0" style="width: 375px;height: 667px;" />
+    <iframe id="simulatorFrame" :src="componentPath" title="simulator" frameBorder="0" style="width: 375px;height: 667px;" />
   </div>
 </template>
 
@@ -9,14 +9,18 @@ export default {
   props: {
     url: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   computed: {
     componentPath() {
+      const theme = window.zarmTheme || '';
+      if (theme === 'dark') {
+        return `${window.CONFIG.pathname}dark.html#/${this.url}`;
+      }
       return `${window.CONFIG.pathname}demo.html#/${this.url}`;
-    }
-  }
+    },
+  },
 };
 </script>
 
